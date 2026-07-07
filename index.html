@@ -328,6 +328,28 @@ footer .brand{justify-content:center;margin-bottom:12px;font-size:1rem}
 #lightbox .lb-prev{left:24px}#lightbox .lb-next{right:24px}
 @media(max-width:600px){#lightbox .lb-nav{display:none}}
 
+/* ============ EXPERIENCIA ============ */
+.xp-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:start}
+@media(max-width:880px){.xp-grid{grid-template-columns:1fr}}
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--brand),var(--brand2),transparent)}
+.tl-item{position:relative;padding-bottom:34px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-32px;top:5px;width:14px;height:14px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 12px -2px var(--brand);border:3px solid var(--bg)}
+.tl-item .when{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--brand2);letter-spacing:1px}
+.tl-item h3{font-family:'Sora';font-size:1.18rem;margin:6px 0 2px;letter-spacing:-.3px}
+.tl-item .org{color:var(--muted);font-size:.9rem;font-weight:600;margin-bottom:10px}
+.tl-item p{color:var(--muted);font-size:.93rem}
+.tl-item p b{color:var(--text);font-weight:600}
+.tl-item .pillrow{margin-top:14px}
+.edu-card{background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;box-shadow:var(--shadow)}
+.edu-card h3{font-family:'Sora';font-size:1.08rem;margin-bottom:14px}
+.edu-item{padding:12px 0;border-top:1px solid var(--line)}
+.edu-item b{display:block;color:var(--text);font-size:.95rem;font-weight:600}
+.edu-item span{color:var(--muted);font-size:.84rem}
+.cv-btn{display:flex;justify-content:center;margin-top:22px}
+
 /* ============ reveal ============ */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -347,6 +369,7 @@ footer .brand{justify-content:center;margin-bottom:12px;font-size:1rem}
       <ul>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#destacados">Destacados</a></li>
@@ -369,6 +392,7 @@ footer .brand{justify-content:center;margin-bottom:12px;font-size:1rem}
       <p class="hero-lead reveal" data-d="3">Construyo plataformas <strong>SaaS de extremo a extremo</strong> — desde la arquitectura y el backend hasta el frontend, la IA y el despliegue en producción. 6 sistemas reales corriendo hoy, con más de 1.800 usuarios.</p>
       <div class="hero-actions reveal" data-d="4">
         <a href="#proyectos" class="btn btn-primary">Ver proyectos →</a>
+        <a href="assets/Kevin-Uribe-CV.pdf" download class="btn btn-ghost">📄 Descargar CV</a>
         <a href="#contacto" class="btn btn-ghost">Hablemos</a>
       </div>
       <div class="socials reveal" data-d="4">
@@ -416,6 +440,47 @@ footer .brand{justify-content:center;margin-bottom:12px;font-size:1rem}
         <div class="stat reveal" data-d="2"><div class="num" data-target="1800" data-suffix="+">0</div><div class="lbl">Usuarios en producción</div></div>
         <div class="stat reveal" data-d="3"><div class="num" data-target="527">0</div><div class="lbl">Puntos de venta gestionados</div></div>
         <div class="stat reveal" data-d="4"><div class="num" data-target="9" data-suffix="">0</div><div class="lbl">Herramientas IA tool-calling</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section id="experiencia">
+  <div class="wrap">
+    <div class="head-pad">
+      <p class="eyebrow reveal">Trayectoria</p>
+      <h2 class="sec reveal" data-d="1">Experiencia</h2>
+    </div>
+    <div class="xp-grid">
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <span class="when">2026 — presente</span>
+          <h3>Desarrollador Full-Stack · Etapa práctica</h3>
+          <div class="org">Supergiros del Norte del Valle · Colombia</div>
+          <p>Diseño, construcción y operación de 3 plataformas internas en producción para <b>+1.700 usuarios</b>: <b>AppVisitas</b> (field service, 527 puntos de venta), <b>Altius</b> (SaaS regulatorio de trabajo en alturas) y <b>SuperEdu</b> (LMS corporativo, 885 empleados). End-to-end: backend, frontend, infraestructura y despliegue.</p>
+          <div class="pillrow"><span>Node.js</span><span>NestJS</span><span>Next.js</span><span>React</span><span>Symfony</span><span>PostgreSQL</span><span>Docker</span></div>
+        </div>
+        <div class="tl-item reveal" data-d="1">
+          <span class="when">2025 — presente</span>
+          <h3>Fundador · Desarrollador único</h3>
+          <div class="org">Neziak — SaaS propio · neziak.cloud</div>
+          <p>Plataforma multi-tenant que unifica <b>chatbot de ventas con IA por WhatsApp</b>, POS, inventario, CRM y pagos. 24 modelos de datos, 27 módulos de API, 11 contenedores en producción y cliente real operando a diario. Desde 2026 en paralelo con la etapa práctica.</p>
+          <div class="pillrow"><span>TypeScript</span><span>Fastify</span><span>Prisma</span><span>BullMQ</span><span>Vercel AI SDK</span><span>Traefik</span></div>
+        </div>
+        <div class="tl-item reveal" data-d="2">
+          <span class="when">2024</span>
+          <h3>Desarrollador Freelance · E-commerce</h3>
+          <div class="org">Proyectos independientes</div>
+          <p><b>Gambeta Tienda</b> y <b>Taller Macramé</b>: dos tiendas online construidas y desplegadas de forma independiente, ambas operando hoy. Gambeta funciona actualmente integrada con Neziak como un solo sistema.</p>
+          <div class="pillrow"><span>WordPress</span><span>WooCommerce</span><span>PHP</span></div>
+        </div>
+      </div>
+      <div class="edu-card reveal" data-d="1">
+        <h3>🎓 Formación</h3>
+        <div class="edu-item"><b>Ingeniería de Software</b><span>8.º semestre — en curso</span></div>
+        <div class="edu-item"><b>Tecnólogo en Análisis y Desarrollo de Software</b><span>Graduado</span></div>
+        <div class="cv-btn"><a href="assets/Kevin-Uribe-CV.pdf" download class="btn btn-primary" style="width:100%;justify-content:center">📄 Descargar CV (PDF)</a></div>
       </div>
     </div>
   </div>
@@ -643,6 +708,7 @@ footer .brand{justify-content:center;margin-bottom:12px;font-size:1rem}
       <div class="contact-actions">
         <a href="mailto:kevindaviduribe@gmail.com?subject=Hablemos%20de%20un%20proyecto" class="btn btn-primary">✉️ Enviar email</a>
         <a href="https://wa.me/573001090344" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp</a>
+        <a href="assets/Kevin-Uribe-CV.pdf" download class="btn btn-ghost">📄 Descargar CV</a>
       </div>
     </div>
   </div>
