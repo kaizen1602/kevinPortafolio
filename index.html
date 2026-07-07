@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kevin Uribe — Desarrollador Full-Stack</title>
+<meta name="description" content="Portafolio de Kevin Uribe — Desarrollador Full-Stack. Plataformas SaaS, agentes de IA, sistemas en producción. TypeScript, Node.js, React, Next.js, NestJS, PostgreSQL, Docker." />
+<meta name="author" content="Kevin David Uribe" />
+<meta name="theme-color" content="#070a12" />
+<meta name="google" content="notranslate" />
+
+<!-- Open Graph — si cambias de dominio, actualiza og:url y og:image/twitter:image -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kaizen1602.github.io/kevinPortafolio/" />
+<meta property="og:title" content="Kevin Uribe — Desarrollador Full-Stack" />
+<meta property="og:description" content="6 proyectos en producción · SaaS multi-tenant · Agentes de IA · +280 usuarios. TypeScript · Node · React · Next.js · NestJS · PostgreSQL · Docker." />
+<meta property="og:image" content="https://kaizen1602.github.io/kevinPortafolio/assets/img/kevin.jpeg" />
+<meta property="og:locale" content="es_CO" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kevin Uribe — Desarrollador Full-Stack" />
+<meta name="twitter:description" content="6 proyectos en producción · SaaS multi-tenant · Agentes de IA · +280 usuarios." />
+<meta name="twitter:image" content="https://kaizen1602.github.io/kevinPortafolio/assets/img/kevin.jpeg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='%23070a12'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='52' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#070a12; --bg2:#0b1020; --surface:#0e1424; --surface2:#121a30;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --text:#e9edf6; --muted:#9aa6c2; --muted2:#697391;
+  --brand:#7c3aed; --brand2:#06b6d4; --accent:#22d3ee;
+  --r:20px; --r-sm:12px;
+  --shadow:0 24px 60px -20px rgba(0,0,0,.7);
+  --maxw:1180px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.6; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  cursor:default;
+}
+body::before{ /* fixed aurora backdrop */
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(50rem 50rem at 12% -8%, rgba(124,58,237,.20), transparent 60%),
+    radial-gradient(46rem 46rem at 92% 4%, rgba(6,182,212,.16), transparent 60%),
+    radial-gradient(60rem 50rem at 50% 120%, rgba(124,58,237,.12), transparent 60%);
+}
+body::after{ /* subtle grid */
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 60% at 50% 0%,#000,transparent 80%);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(92%,var(--maxw));margin-inline:auto}
+section{padding:clamp(70px,11vh,130px) 0;position:relative}
+
+/* ============ scroll progress + cursor glow ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--brand),var(--brand2));box-shadow:0 0 14px var(--brand2)}
+#glow{position:fixed;width:520px;height:520px;border-radius:50%;left:0;top:0;z-index:0;pointer-events:none;
+  transform:translate(-50%,-50%);transition:opacity .4s;
+  background:radial-gradient(circle,rgba(124,58,237,.10),transparent 60%);}
+@media (max-width:860px){#glow{display:none}}
+
+/* ============ NAV ============ */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:.4s var(--ease)}
+header.nav.scrolled{background:rgba(7,10,18,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Sora';font-weight:700;font-size:1.05rem;letter-spacing:.2px}
+.brand .mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 8px 22px -6px var(--brand)}
+.brand .mark span{background:linear-gradient(#fff,#dfe);-webkit-background-clip:text;background-clip:text;color:#fff}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{padding:9px 15px;border-radius:999px;color:var(--muted);font-size:.92rem;font-weight:500;transition:.25s var(--ease);position:relative}
+nav a:hover{color:var(--text)}
+nav a.active{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-cta{padding:10px 18px;border-radius:999px;font-weight:600;font-size:.9rem;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 26px -10px var(--brand);transition:.25s var(--ease)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px var(--brand)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:9px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--text);margin:4px 0;transition:.3s}
+@media(max-width:860px){
+  nav.menu{position:fixed;inset:64px 4% auto 4%;background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:14px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s var(--ease);box-shadow:var(--shadow)}
+  nav.menu.open{transform:none;opacity:1;pointer-events:auto}
+  nav ul{flex-direction:column;gap:2px}
+  nav a{display:block}
+  .nav-cta{display:none}
+  .burger{display:block}
+}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:90px;position:relative;overflow:hidden}
+#particles{position:absolute;inset:0;z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:54px;align-items:center;position:relative;z-index:2}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:38px;text-align:center}}
+.tagpill{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--line-2);background:rgba(255,255,255,.03);font-size:.84rem;color:var(--muted);font-weight:500;margin-bottom:22px}
+.tagpill .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 9px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+h1.hero-title{font-family:'Sora';font-weight:800;line-height:1.02;letter-spacing:-1.5px;
+  font-size:clamp(2.7rem,7vw,5.2rem);margin-bottom:10px}
+.hero-title .grad{background:linear-gradient(110deg,var(--brand) 5%,var(--brand2) 55%,#a78bfa 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.role-line{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,2.4vw,1.4rem);color:var(--accent);min-height:1.6em;margin-bottom:20px}
+.role-line .cursor{display:inline-block;width:10px;background:var(--accent);margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-lead{color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);max-width:50ch;margin-bottom:30px}
+@media(max-width:920px){.hero-lead{margin-inline:auto}}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:920px){.hero-actions{justify-content:center}}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:14px;font-weight:600;font-size:.96rem;
+  transition:.3s var(--ease);border:1px solid transparent;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 14px 34px -12px var(--brand)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 44px -14px var(--brand)}
+.btn-ghost{border-color:var(--line-2);background:rgba(255,255,255,.02);color:var(--text)}
+.btn-ghost:hover{border-color:var(--brand2);background:rgba(6,182,212,.08);transform:translateY(-3px)}
+.socials{display:flex;gap:12px;margin-top:26px}
+@media(max-width:920px){.socials{justify-content:center}}
+.socials a{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line);
+  background:rgba(255,255,255,.02);color:var(--muted);transition:.3s var(--ease)}
+.socials a:hover{color:#fff;border-color:var(--brand2);transform:translateY(-3px);background:rgba(6,182,212,.08)}
+
+/* photo */
+.photo-wrap{justify-self:center;position:relative;width:min(330px,80vw);aspect-ratio:1}
+.photo-wrap .ring{position:absolute;inset:-14px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--brand),var(--brand2),#a78bfa,var(--brand));animation:spin 9s linear infinite;
+  filter:blur(2px);opacity:.85}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-wrap .ring::after{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--bg)}
+.photo-wrap .photo{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.1);box-shadow:var(--shadow)}
+.photo-wrap .photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:transform .6s var(--ease)}
+.photo-wrap:hover .photo img{transform:scale(1.06)}
+.float-badge{position:absolute;display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:14px;
+  background:rgba(14,20,36,.85);backdrop-filter:blur(10px);border:1px solid var(--line-2);font-size:.82rem;font-weight:600;box-shadow:var(--shadow)}
+.float-badge small{color:var(--muted);font-weight:500;display:block;font-size:.72rem}
+.fb-1{top:6%;left:-10%;animation:floaty 5s ease-in-out infinite}
+.fb-2{bottom:8%;right:-12%;animation:floaty 5s ease-in-out infinite .8s}
+.fb-3{bottom:42%;left:-18%;animation:floaty 6s ease-in-out infinite .4s}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+@media(max-width:920px){.fb-1{left:0}.fb-2{right:0}.fb-3{display:none}}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted2);font-size:.78rem;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint .mouse{width:24px;height:38px;border:2px solid var(--muted2);border-radius:14px;position:relative}
+.scroll-hint .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:4px;height:7px;border-radius:3px;background:var(--muted);animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:0;top:6px}40%{opacity:1}100%{opacity:0;top:18px}}
+
+/* ============ section heading ============ */
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:2px;text-transform:uppercase;color:var(--brand2);margin-bottom:12px;display:flex;align-items:center;gap:10px;justify-content:center}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;width:34px;background:linear-gradient(90deg,transparent,var(--brand2))}
+.eyebrow::before{background:linear-gradient(90deg,var(--brand2),transparent)}
+h2.sec{font-family:'Sora';font-weight:800;letter-spacing:-1px;font-size:clamp(2rem,4.4vw,3.1rem);text-align:center;line-height:1.08}
+.sec-sub{text-align:center;color:var(--muted);max-width:62ch;margin:16px auto 0;font-size:1.04rem}
+.head-pad{margin-bottom:58px}
+
+/* ============ ABOUT / STATS ============ */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
+@media(max-width:880px){.about-grid{grid-template-columns:1fr;gap:34px}}
+.about-card{background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:32px 30px;box-shadow:var(--shadow)}
+.about-card h3{font-family:'Sora';font-size:1.5rem;margin-bottom:14px;letter-spacing:-.4px}
+.about-card p{color:var(--muted);margin-bottom:14px}
+.about-card p strong{color:var(--text);font-weight:600}
+.pillrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.pillrow span{font-size:.8rem;padding:6px 13px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.stat{position:relative;background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;overflow:hidden;transition:.4s var(--ease)}
+.stat::before{content:"";position:absolute;inset:0;background:radial-gradient(20rem 12rem at 100% 0,rgba(124,58,237,.18),transparent 60%);opacity:0;transition:.4s}
+.stat:hover{transform:translateY(-5px);border-color:var(--line-2)}
+.stat:hover::before{opacity:1}
+.stat .num{font-family:'Sora';font-weight:800;font-size:clamp(2rem,4vw,2.8rem);line-height:1;
+  background:linear-gradient(135deg,#fff,var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{color:var(--muted);font-size:.92rem;margin-top:8px}
+
+/* ============ STACK MARQUEE ============ */
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee+.marquee{margin-top:16px}
+.track{display:flex;gap:14px;width:max-content;animation:scroll 38s linear infinite}
+.track.rev{animation-direction:reverse;animation-duration:46s}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.chip{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:14px;white-space:nowrap;
+  border:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--bg2));font-weight:600;font-size:.95rem;color:var(--text)}
+.chip i{width:9px;height:9px;border-radius:3px;background:linear-gradient(135deg,var(--brand),var(--brand2))}
+
+/* ============ PROJECTS ============ */
+.proj{display:grid;grid-template-columns:1.05fr 1fr;gap:42px;align-items:center;margin-bottom:60px;
+  --c:var(--brand);--c2:var(--brand2)}
+.proj:nth-child(even){direction:rtl}
+.proj:nth-child(even)>*{direction:ltr}
+@media(max-width:920px){.proj{grid-template-columns:1fr;gap:26px;direction:ltr!important}}
+.proj-media{position:relative}
+.proj-shot{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-2);box-shadow:var(--shadow);
+  background:var(--surface);transform-style:preserve-3d;transition:transform .4s var(--ease)}
+.proj-shot::after{content:"";position:absolute;inset:0;border-radius:var(--r);pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);background:linear-gradient(160deg,rgba(255,255,255,.06),transparent 40%)}
+.browser-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(0,0,0,.35);border-bottom:1px solid var(--line)}
+.browser-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}
+.browser-bar i:nth-child(2){background:#febc2e}.browser-bar i:nth-child(3){background:#28c840}
+.browser-bar .url{margin-left:12px;font-family:'JetBrains Mono';font-size:.72rem;color:var(--muted2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.proj-shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;cursor:zoom-in;transition:.5s var(--ease)}
+.proj-glow{position:absolute;inset:-30px -30px auto;height:60%;border-radius:50%;z-index:-1;filter:blur(60px);opacity:.4;
+  background:radial-gradient(circle,var(--c),transparent 70%)}
+.thumbs{display:flex;gap:10px;margin-top:12px}
+.thumbs img{width:100%;height:60px;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line);cursor:pointer;opacity:.6;transition:.3s var(--ease)}
+.thumbs img:hover,.thumbs img.sel{opacity:1;border-color:var(--c2);transform:translateY(-2px)}
+.proj-info .kicker{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:.78rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--c2);margin-bottom:12px}
+.proj-info .kicker .pdot{width:9px;height:9px;border-radius:50%;background:var(--c2);box-shadow:0 0 12px var(--c2)}
+.proj-info h3{font-family:'Sora';font-weight:800;font-size:clamp(1.7rem,3.2vw,2.3rem);letter-spacing:-.6px;margin-bottom:6px}
+.proj-info .sub{color:var(--c2);font-weight:600;font-size:.95rem;margin-bottom:14px}
+.proj-info p.desc{color:var(--muted);margin-bottom:18px}
+.metrics{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.metric{padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02);min-width:84px}
+.metric b{font-family:'Sora';display:block;font-size:1.15rem;color:var(--text);line-height:1}
+.metric span{font-size:.74rem;color:var(--muted2)}
+.feats{list-style:none;margin-bottom:20px;display:grid;gap:8px}
+.feats li{position:relative;padding-left:26px;color:var(--muted);font-size:.92rem}
+.feats li::before{content:"";position:absolute;left:0;top:8px;width:13px;height:13px;border-radius:4px;
+  background:linear-gradient(135deg,var(--c),var(--c2));box-shadow:0 0 10px -2px var(--c)}
+.feats li b{color:var(--text);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.tags span{font-size:.74rem;font-family:'JetBrains Mono';padding:5px 11px;border-radius:8px;
+  border:1px solid color-mix(in srgb,var(--c2) 35%,var(--line));background:color-mix(in srgb,var(--c2) 8%,transparent);color:var(--text)}
+.proj-link{display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--c2);padding:11px 20px;border-radius:12px;
+  border:1px solid color-mix(in srgb,var(--c2) 40%,var(--line));transition:.3s var(--ease)}
+.proj-link:hover{background:color-mix(in srgb,var(--c2) 14%,transparent);transform:translateY(-2px);gap:13px}
+.proj-link.muted{color:var(--muted);border-color:var(--line);cursor:default}
+.proj-link.muted:hover{transform:none;background:none}
+
+/* e-commerce dual */
+.ecom-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
+@media(max-width:760px){.ecom-grid{grid-template-columns:1fr}}
+.ecom{--c:var(--brand);--c2:var(--brand2);background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;transition:.4s var(--ease);box-shadow:var(--shadow)}
+.ecom:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--c2) 40%,var(--line))}
+.ecom .shot{position:relative;overflow:hidden}
+.ecom .shot img{aspect-ratio:16/9;object-fit:cover;object-position:top;cursor:zoom-in;transition:.5s var(--ease)}
+.ecom:hover .shot img{transform:scale(1.05)}
+.ecom .shot .glow{position:absolute;inset:auto -20% -40% -20%;height:70%;filter:blur(50px);opacity:.45;background:radial-gradient(circle,var(--c2),transparent 70%)}
+.ecom .body{padding:22px 22px 24px}
+.ecom .body .kicker{font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--c2);margin-bottom:8px}
+.ecom .body h4{font-family:'Sora';font-size:1.3rem;margin-bottom:8px}
+.ecom .body p{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.ecom .tags{margin-bottom:16px}
+
+/* SuperEdu placeholder shot */
+.placeholder-shot{aspect-ratio:16/10;display:grid;place-items:center;position:relative;overflow:hidden;cursor:default;
+  background:radial-gradient(120% 120% at 0 0,color-mix(in srgb,var(--c) 30%,#0c1322),#0a0f1e)}
+.placeholder-shot svg{width:96px;height:96px;opacity:.9;filter:drop-shadow(0 10px 20px rgba(0,0,0,.4))}
+.placeholder-shot .pl-label{position:absolute;bottom:16px;font-family:'JetBrains Mono';font-size:.78rem;color:var(--muted);letter-spacing:1px}
+.placeholder-shot .pl-grid{position:absolute;inset:0;opacity:.3;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px}
+
+/* ============ HIGHLIGHTS ============ */
+.hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.hl-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.hl-grid{grid-template-columns:1fr}}
+.hl{position:relative;background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:var(--r);
+  padding:28px 24px;overflow:hidden;transition:.4s var(--ease)}
+.hl::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand2));transform:scaleX(0);transform-origin:left;transition:.5s var(--ease)}
+.hl:hover{transform:translateY(-6px);border-color:var(--line-2)}
+.hl:hover::before{transform:scaleX(1)}
+.hl .ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(6,182,212,.2));border:1px solid var(--line-2);font-size:1.5rem}
+.hl h4{font-family:'Sora';font-size:1.12rem;margin-bottom:9px;letter-spacing:-.3px}
+.hl p{color:var(--muted);font-size:.92rem}
+.hl .res{display:inline-block;margin-top:12px;font-family:'JetBrains Mono';font-size:.78rem;color:#22d3ee;
+  padding:5px 10px;border-radius:8px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25)}
+
+/* ============ CONTACT ============ */
+.contact{text-align:center}
+.contact-card{max-width:760px;margin:0 auto;background:linear-gradient(180deg,var(--surface),var(--bg2));
+  border:1px solid var(--line);border-radius:28px;padding:clamp(34px,6vw,60px);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.contact-card::before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;
+  background:linear-gradient(135deg,var(--brand),transparent 40%,transparent 60%,var(--brand2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none}
+.contact-card h2{font-family:'Sora';font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.8px;margin-bottom:14px}
+.contact-card p{color:var(--muted);margin-bottom:28px}
+.contact-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.mail-big{font-family:'JetBrains Mono';font-size:clamp(.95rem,2.2vw,1.25rem);color:var(--accent);margin:6px 0 28px;word-break:break-all}
+footer{padding:34px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted2);font-size:.86rem}
+footer .brand{justify-content:center;margin-bottom:12px;font-size:1rem}
+
+/* ============ LIGHTBOX ============ */
+#lightbox{position:fixed;inset:0;z-index:200;background:rgba(4,6,12,.92);backdrop-filter:blur(8px);
+  display:grid;place-items:center;opacity:0;pointer-events:none;transition:.3s}
+#lightbox.open{opacity:1;pointer-events:auto}
+#lightbox img{max-width:92vw;max-height:86vh;border-radius:14px;border:1px solid var(--line-2);box-shadow:var(--shadow);transform:scale(.96);transition:.3s var(--ease)}
+#lightbox.open img{transform:scale(1)}
+#lightbox .lb-close{position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.05);color:#fff;font-size:1.4rem;cursor:pointer;display:grid;place-items:center}
+#lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.05);color:#fff;font-size:1.5rem;cursor:pointer;display:grid;place-items:center;transition:.25s}
+#lightbox .lb-nav:hover{background:var(--brand)}
+#lightbox .lb-prev{left:24px}#lightbox .lb-next{right:24px}
+@media(max-width:600px){#lightbox .lb-nav{display:none}}
+
+/* ============ reveal ============ */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}.reveal[data-d="4"]{transition-delay:.32s}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="glow"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="topnav">
+  <div class="wrap nav-inner">
+    <a href="#inicio" class="brand"><span class="mark"><span>K</span></span> Kevin&nbsp;Uribe</a>
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#destacados">Destacados</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="#contacto" class="nav-cta">Contáctame</a>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <canvas id="particles"></canvas>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="tagpill reveal"><span class="dot"></span> Disponible para nuevos proyectos · Colombia</span>
+      <h1 class="hero-title reveal" data-d="1">Hola, soy Kevin<br><span class="grad">Full-Stack Developer</span></h1>
+      <div class="role-line reveal" data-d="2"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
+      <p class="hero-lead reveal" data-d="3">Construyo plataformas <strong>SaaS de extremo a extremo</strong> — desde la arquitectura y el backend hasta el frontend, la IA y el despliegue en producción. 6 sistemas reales corriendo hoy, usados a diario por cientos de personas.</p>
+      <div class="hero-actions reveal" data-d="4">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos →</a>
+        <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+      </div>
+      <div class="socials reveal" data-d="4">
+        <a href="mailto:kevindaviduribe@gmail.com" title="Email" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+        <a href="https://github.com/kaizen1602" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.8.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.3 6.8-9.8C22 6.6 17.5 2 12 2z"/></svg></a>
+        <a href="https://wa.me/573001090344" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="photo-wrap reveal" data-d="2">
+      <div class="ring"></div>
+      <div class="photo"><img src="assets/img/kevin.webp" alt="Kevin Uribe" fetchpriority="high" /></div>
+      <div class="float-badge fb-1">⚡ <div><small>En producción</small>6 proyectos</div></div>
+      <div class="float-badge fb-2">🤖 <div><small>Agente IA</small>WhatsApp + tools</div></div>
+      <div class="float-badge fb-3">🧩 <div><small>End-to-end</small>Solo dev</div></div>
+    </div>
+  </div>
+  <a href="#sobre-mi" class="scroll-hint"><div class="mouse"></div>scroll</a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="sobre-mi">
+  <div class="wrap">
+    <div class="head-pad">
+      <p class="eyebrow reveal">Sobre mí</p>
+      <h2 class="sec reveal" data-d="1">De la idea a producción, yo solo</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h3>Desarrollador Full-Stack</h3>
+        <p>Diseño y construyo <strong>productos completos</strong>: backend, frontend, base de datos, IA, infraestructura y operación en VPS. No solo escribo features — <strong>las despliego, las mantengo y las opero en producción</strong>.</p>
+        <p>Mi terreno favorito: <strong>SaaS multi-tenant</strong>, sistemas con autenticación robusta (JWT, 2FA TOTP, RBAC granular), agentes de IA con tool-calling, integraciones con APIs externas y pipelines de datos. Obsesionado con la seguridad, la atomicidad y el cero-downtime.</p>
+        <p>He resuelto bugs críticos en producción con impacto medible, diseñado workflows con separación de roles y gates anti-fraude, y orquestado despliegues con Docker, Nginx y Traefik.</p>
+        <div class="pillrow">
+          <span>🇨🇴 Colombia</span><span>Full-Stack</span><span>SaaS</span><span>IA aplicada</span><span>DevOps</span><span>Seguridad</span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat reveal" data-d="1"><div class="num" data-target="6">0</div><div class="lbl">Proyectos en producción</div></div>
+        <div class="stat reveal" data-d="2"><div class="num" data-target="280" data-suffix="+">0</div><div class="lbl">Usuarios activos reales</div></div>
+        <div class="stat reveal" data-d="3"><div class="num" data-target="44" data-suffix="K+">0</div><div class="lbl">Líneas de código (Neziak)</div></div>
+        <div class="stat reveal" data-d="4"><div class="num" data-target="9" data-suffix="">0</div><div class="lbl">Herramientas IA tool-calling</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section id="stack">
+  <div class="wrap head-pad">
+    <p class="eyebrow reveal">Tecnologías</p>
+    <h2 class="sec reveal" data-d="1">Stack que domino</h2>
+    <p class="sec-sub reveal" data-d="2">Un mismo lenguaje de extremo a extremo cuando se puede, la herramienta correcta cuando hace falta.</p>
+  </div>
+  <div class="marquee reveal">
+    <div class="track" id="track1"></div>
+  </div>
+  <div class="marquee reveal">
+    <div class="track rev" id="track2"></div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="proyectos">
+  <div class="wrap">
+    <div class="head-pad">
+      <p class="eyebrow reveal">Portafolio</p>
+      <h2 class="sec reveal" data-d="1">Proyectos en producción</h2>
+      <p class="sec-sub reveal" data-d="2">Plataformas reales, con usuarios reales, desplegadas y operadas por mí. Haz clic en cualquier captura para ampliarla.</p>
+    </div>
+
+    <!-- NEZIAK -->
+    <article class="proj reveal" style="--c:#8b5cf6;--c2:#a78bfa" data-gallery="neziak">
+      <div class="proj-media">
+        <div class="proj-glow"></div>
+        <div class="proj-shot tilt">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">neziak.cloud</span></div>
+          <img src="assets/img/neziak-1.webp" loading="lazy" decoding="async" alt="Neziak — Dashboard" data-main />
+        </div>
+        <div class="thumbs">
+          <img src="assets/img/neziak-1.webp" loading="lazy" decoding="async" class="sel" alt="Dashboard Neziak" />
+          <img src="assets/img/neziak-2.webp" loading="lazy" decoding="async" alt="Punto de venta Neziak" />
+          <img src="assets/img/neziak-3.webp" loading="lazy" decoding="async" alt="Chat IA WhatsApp Neziak" />
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="kicker"><span class="pdot"></span> SaaS multi-tenant · En producción</span>
+        <h3>Neziak</h3>
+        <div class="sub">Chatbot IA WhatsApp + POS + Inventario + CRM + Pagos</div>
+        <p class="desc">Plataforma SaaS que unifica en un solo producto lo que normalmente requiere 4–5 herramientas. Construida <b>en solitario, end-to-end</b>. Soporta 3 verticales (retail, food, services) sobre el mismo código, con cliente productivo real.</p>
+        <div class="metrics">
+          <div class="metric"><b>~44K</b><span>líneas TS</span></div>
+          <div class="metric"><b>24</b><span>modelos datos</span></div>
+          <div class="metric"><b>27</b><span>módulos API</span></div>
+          <div class="metric"><b>11</b><span>contenedores prod</span></div>
+        </div>
+        <ul class="feats">
+          <li><b>Agente IA por WhatsApp</b> con 9 herramientas de tool-calling que cierra pedidos de forma autónoma + endurecimiento anti-alucinación.</li>
+          <li><b>Arquitectura asíncrona</b> con BullMQ/Redis (colas + DLQ) y costos de IA contabilizados por tenant.</li>
+          <li><b>Cockpit en tiempo real (SSE)</b> con métricas de host, Postgres, Redis y OpenAI; integración WooCommerce + Wompi (webhooks HMAC).</li>
+        </ul>
+        <div class="tags"><span>TypeScript</span><span>Fastify 5</span><span>Prisma 6</span><span>PostgreSQL 16</span><span>BullMQ</span><span>Vercel AI SDK</span><span>React 18</span><span>Tailwind 4</span><span>Docker</span><span>Traefik</span></div>
+        <a href="https://neziak.cloud" target="_blank" rel="noopener" class="proj-link">Visitar neziak.cloud →</a>
+      </div>
+    </article>
+
+    <!-- APPVISITAS -->
+    <article class="proj reveal" style="--c:#2563eb;--c2:#3b82f6" data-gallery="appvisitas">
+      <div class="proj-media">
+        <div class="proj-glow"></div>
+        <div class="proj-shot tilt">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">appvisitas.sgnv.com.co</span></div>
+          <img src="assets/img/appvisitas-1.webp" loading="lazy" decoding="async" alt="AppVisitas — Dashboard" data-main />
+        </div>
+        <div class="thumbs">
+          <img src="assets/img/appvisitas-1.webp" loading="lazy" decoding="async" class="sel" alt="Dashboard AppVisitas" />
+          <img src="assets/img/appvisitas-2.webp" loading="lazy" decoding="async" alt="Resumen comercial AppVisitas" />
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="kicker"><span class="pdot"></span> Field Service · En producción</span>
+        <h3>AppVisitas</h3>
+        <div class="sub">Gestión de visitas técnicas y comerciales en campo</div>
+        <p class="desc">Plataforma corporativa para una empresa de servicios financieros con operación regional. Soporta la operación diaria con flujos críticos de visitas técnicas y supervisión comercial mensual de puntos de venta.</p>
+        <div class="metrics">
+          <div class="metric"><b>65</b><span>usuarios · 8 roles</span></div>
+          <div class="metric"><b>527</b><span>puntos de venta</span></div>
+          <div class="metric"><b>55</b><span>permisos RBAC</span></div>
+          <div class="metric"><b>95ms</b><span>P95 HTTP</span></div>
+        </div>
+        <ul class="feats">
+          <li><b>Auth doble factor</b> con JWT bicapa (access + refresh) y TOTP enrollment con QR dinámico; RBAC granular idempotente.</li>
+          <li><b>Bug crítico resuelto:</b> kicks por <i>invalid signature</i> de 9/día → 0/día; logins/día bajaron 70%.</li>
+          <li><b>Pipeline de imágenes</b> Multer + Sharp (auto-rotación EXIF → WebP, −70% disco) y doble firma contractual en visitas CDA.</li>
+        </ul>
+        <div class="tags"><span>Node 22</span><span>Express 5</span><span>PostgreSQL</span><span>Sequelize</span><span>Redis</span><span>Socket.IO</span><span>React 19</span><span>Zustand</span><span>Leaflet</span><span>Sharp</span></div>
+        <a class="proj-link muted">🔒 Red interna corporativa</a>
+      </div>
+    </article>
+
+    <!-- ALTIUS -->
+    <article class="proj reveal" style="--c:#06b6d4;--c2:#22d3ee" data-gallery="altius">
+      <div class="proj-media">
+        <div class="proj-glow"></div>
+        <div class="proj-shot tilt">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">altius.sgnv.com.co/ats</span></div>
+          <img src="assets/img/altius-1.webp" loading="lazy" decoding="async" alt="Altius — ATS" data-main />
+        </div>
+        <div class="thumbs">
+          <img src="assets/img/altius-1.webp" loading="lazy" decoding="async" class="sel" alt="Listado ATS Altius" />
+          <img src="assets/img/altius-2.webp" loading="lazy" decoding="async" alt="Catálogo de riesgos Altius" />
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="kicker"><span class="pdot"></span> SaaS regulatorio · En producción</span>
+        <h3>Altius</h3>
+        <div class="sub">Trabajo en Alturas · Resolución 4272/2021 (Colombia)</div>
+        <p class="desc">Digitaliza el Análisis de Trabajo Seguro (ATS) y los Permisos de Trabajo en Alturas, reemplazando el flujo manual en Excel. Genera automáticamente los formatos oficiales FO-GH-ST-22 y FO-GH-ST-23.</p>
+        <div class="metrics">
+          <div class="metric"><b>&lt;5min</b><span>crear ATS (vs 30)</span></div>
+          <div class="metric"><b>90+46</b><span>tests unit+E2E</span></div>
+          <div class="metric"><b>5×17</b><span>roles × permisos</span></div>
+          <div class="metric"><b>24</b><span>modelos Prisma</span></div>
+        </div>
+        <ul class="feats">
+          <li><b>Workflow con separación creador/aprobador</b> + gates anti-autoaprobación a nivel backend y audit log inmutable (diff JSONB).</li>
+          <li><b>Generación Excel oficial</b> con ExcelJS preservando merges, estilos y layout de las plantillas del cliente.</li>
+          <li><b>CAS atómico</b> para transiciones de estado, firmas digitales canvas → MinIO, Argon2id + TOTP, fix de IDOR detectado en code review.</li>
+        </ul>
+        <div class="tags"><span>NestJS 10</span><span>Next.js 15</span><span>RSC</span><span>Prisma 6</span><span>PostgreSQL 16</span><span>MinIO</span><span>Zod</span><span>Argon2id</span><span>Playwright</span><span>Docker</span></div>
+        <a class="proj-link muted">🔒 Red interna corporativa</a>
+      </div>
+    </article>
+
+    <!-- SUPEREDU -->
+    <article class="proj reveal" style="--c:#10b981;--c2:#34d399" data-gallery="">
+      <div class="proj-media">
+        <div class="proj-glow"></div>
+        <div class="proj-shot">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">superedu.sgnv.com.co</span></div>
+          <div class="placeholder-shot">
+            <div class="pl-grid"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#sg)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs>
+              <path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/><path d="M22 10v6"/></svg>
+            <span class="pl-label">LMS corporativo · 213 usuarios</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="kicker"><span class="pdot"></span> LMS corporativo · En producción</span>
+        <h3>SuperEdu</h3>
+        <div class="sub">Frontend custom Next.js sobre Chamilo headless + HERA</div>
+        <p class="desc">Plataforma de formación interna: frontend propio en Next.js consumiendo Chamilo LMS (Symfony) como backend headless, con un sistema RBAC propio e integración con la autoridad corporativa HERA.</p>
+        <div class="metrics">
+          <div class="metric"><b>~70</b><span>endpoints REST</span></div>
+          <div class="metric"><b>213</b><span>usuarios</span></div>
+          <div class="metric"><b>&lt;150ms</b><span>endpoints SQL</span></div>
+          <div class="metric"><b>459</b><span>users HERA</span></div>
+        </div>
+        <ul class="feats">
+          <li><b>~70 endpoints custom en Symfony</b> resolviendo límites de API Platform con DQL nativo y rutas <code>/api/admin/*</code>.</li>
+          <li><b>Arquitectura single-origin</b> con reverse proxy Nginx que elimina CORS y permite acceso por IP o dominio sin recompilar.</li>
+          <li><b>Editor de quizzes drag-and-drop</b> (4 tipos), calificación manual, e integración HERA con sync dryRun / onlyMissing.</li>
+        </ul>
+        <div class="tags"><span>Next.js 14</span><span>TypeScript</span><span>Symfony 6.4</span><span>API Platform</span><span>MariaDB</span><span>PostgreSQL 17</span><span>Nginx</span><span>Docker</span><span>OPcache JIT</span></div>
+        <a class="proj-link muted">🔒 Red interna corporativa</a>
+      </div>
+    </article>
+
+    <!-- E-COMMERCE -->
+    <div class="head-pad reveal" style="margin-top:30px">
+      <p class="eyebrow">También</p>
+      <h2 class="sec" style="font-size:clamp(1.6rem,3.4vw,2.3rem)">E-commerce · WordPress + WooCommerce</h2>
+    </div>
+    <div class="ecom-grid">
+      <article class="ecom reveal" style="--c:#dc2626;--c2:#f87171" data-gallery="gambeta">
+        <div class="shot"><div class="glow"></div><img src="assets/img/gambeta-1.webp" loading="lazy" decoding="async" alt="Gambeta Tienda" data-main /></div>
+        <div class="body">
+          <div class="kicker">Tienda online · En producción</div>
+          <h4>Gambeta Tienda</h4>
+          <p>E-commerce de camisetas de fútbol. Hoy <b>aliada con Neziak</b>: opera integrada como un solo sistema sobre la plataforma SaaS.</p>
+          <div class="tags"><span>WordPress</span><span>WooCommerce</span><span>PHP</span><span>+ Neziak</span></div>
+          <a href="https://gambetatienda.com" target="_blank" rel="noopener" class="proj-link">Visitar tienda →</a>
+        </div>
+      </article>
+      <article class="ecom reveal" data-d="1" style="--c:#d97706;--c2:#fbbf24" data-gallery="macrame">
+        <div class="shot"><div class="glow"></div><img src="assets/img/macrame-1.webp" loading="lazy" decoding="async" alt="Taller Macramé" data-main /></div>
+        <div class="body">
+          <div class="kicker">Tienda online · En producción</div>
+          <h4>Taller Macramé</h4>
+          <p>E-commerce de moda y trajes de baño tejidos a mano, con catálogo, filtros y carrito sobre WooCommerce.</p>
+          <div class="tags"><span>WordPress</span><span>WooCommerce</span><span>PHP</span></div>
+          <a href="https://tallermacrame.com" target="_blank" rel="noopener" class="proj-link">Visitar tienda →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section id="destacados">
+  <div class="wrap">
+    <div class="head-pad">
+      <p class="eyebrow reveal">Ingeniería</p>
+      <h2 class="sec reveal" data-d="1">Logros técnicos destacados</h2>
+      <p class="sec-sub reveal" data-d="2">No solo features: decisiones de arquitectura y problem-solving con impacto medible.</p>
+    </div>
+    <div class="hl-grid">
+      <div class="hl reveal"><div class="ico">🐛</div><h4>Bug de auth en producción</h4><p>Diagnostiqué vía logs Winston un fallo de <i>invalid signature</i> que expulsaba usuarios cada ~8 min. Fix: routing condicional del secret + fallback inteligente.</p><span class="res">9/día → 0/día · −70% logins</span></div>
+      <div class="hl reveal" data-d="1"><div class="ico">🤖</div><h4>Agente IA con tool-calling</h4><p>Bot conversacional por WhatsApp con 9 herramientas que cierra pedidos solo. Idempotencia, sandbox/dry-run y guard anti-abuso contra alucinaciones.</p><span class="res">Vercel AI SDK · BullMQ</span></div>
+      <div class="hl reveal" data-d="2"><div class="ico">🔐</div><h4>RBAC idempotente</h4><p>55 permisos en 12 módulos que se reconcilian solos al arranque. Agregar un permiso = editar un archivo y desplegar, con cero downtime.</p><span class="res">syncPermissions()</span></div>
+      <div class="hl reveal"><div class="ico">⚛️</div><h4>CAS atómico anti-race</h4><p>Transiciones de estado con <code>updateMany({where:{id,status}})</code> y retry-loop con jitter para numeración secuencial bajo concurrencia.</p><span class="res">Sin race conditions</span></div>
+      <div class="hl reveal" data-d="1"><div class="ico">🖼️</div><h4>Pipeline de imágenes</h4><p>Multer + Sharp: lee EXIF, auto-rota, convierte a WebP y optimiza hasta 15 imágenes por request, estructurando paths por fecha.</p><span class="res">−70% espacio en disco</span></div>
+      <div class="hl reveal" data-d="2"><div class="ico">🚢</div><h4>DevOps en producción</h4><p>Docker multi-stage, Nginx/Traefik con TLS automático, single-origin sin CORS, OPcache JIT, migración de datos en caliente sin downtime.</p><span class="res">VPS Debian · &lt;150ms</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <p class="eyebrow" style="justify-content:center">Contacto</p>
+      <h2>¿Construimos algo grande?</h2>
+      <p>Estoy abierto a proyectos full-stack, SaaS, IA aplicada y roles de desarrollo. Escríbeme y te respondo.</p>
+      <div class="mail-big">kevindaviduribe@gmail.com</div>
+      <div class="contact-actions">
+        <a href="mailto:kevindaviduribe@gmail.com?subject=Hablemos%20de%20un%20proyecto" class="btn btn-primary">✉️ Enviar email</a>
+        <a href="https://wa.me/573001090344" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#inicio" class="brand"><span class="mark"><span>K</span></span> Kevin Uribe</a>
+    <p>Desarrollador Full-Stack · Diseñado y construido con código a mano · © <span id="year"></span></p>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" aria-label="Cerrar">×</button>
+  <button class="lb-nav lb-prev" aria-label="Anterior">‹</button>
+  <img src="" alt="Vista ampliada" />
+  <button class="lb-nav lb-next" aria-label="Siguiente">›</button>
+</div>
+
+<script>
+/* ===== year ===== */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===== nav scroll state + active link ===== */
+const nav = document.getElementById('topnav');
+const links = [...document.querySelectorAll('nav a')];
+const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const onScroll = () => {
+  nav.classList.toggle('scrolled', scrollY > 40);
+  const sc = scrollY + innerHeight*0.32;
+  let cur = sections[0];
+  for (const s of sections){ if (s.offsetTop <= sc) cur = s; }
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+(cur && cur.id)));
+  const h = document.documentElement;
+  document.getElementById('progress').style.width = (scrollY/(h.scrollHeight-innerHeight)*100)+'%';
+};
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* ===== mobile menu ===== */
+const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+burger.addEventListener('click', () => menu.classList.toggle('open'));
+menu.addEventListener('click', e => { if (e.target.tagName==='A') menu.classList.remove('open'); });
+
+/* ===== cursor glow ===== */
+const glow = document.getElementById('glow');
+addEventListener('pointermove', e => { glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; }, {passive:true});
+
+/* ===== typing effect ===== */
+const roles = ['Desarrollador Full-Stack','Arquitecto de SaaS','Backend · Frontend · DevOps','Constructor de agentes IA','De la idea a producción'];
+const typed = document.getElementById('typed');
+let ri=0, ci=0, del=false;
+(function type(){
+  const w = roles[ri];
+  typed.textContent = w.slice(0, ci);
+  if (!del && ci < w.length){ ci++; setTimeout(type,70); }
+  else if (del && ci > 0){ ci--; setTimeout(type,35); }
+  else { if (!del){ del=true; setTimeout(type,1500); } else { del=false; ri=(ri+1)%roles.length; setTimeout(type,260); } }
+})();
+
+/* ===== reveal on scroll ===== */
+const io = new IntersectionObserver((es)=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== count-up ===== */
+const cup = new IntersectionObserver((es)=>es.forEach(en=>{
+  if(!en.isIntersecting) return; cup.unobserve(en.target);
+  const el=en.target, t=+el.dataset.target, suf=el.dataset.suffix||''; let s=0, st=performance.now(), dur=1600;
+  const step=now=>{ let p=Math.min((now-st)/dur,1); p=1-Math.pow(1-p,3); el.textContent=Math.round(t*p)+ (p===1?suf:''); if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}),{threshold:.6});
+document.querySelectorAll('.num[data-target]').forEach(el=>cup.observe(el));
+
+/* ===== stack marquee ===== */
+const stackA = ['TypeScript','JavaScript','Node.js','React','Next.js','NestJS','Express','Fastify','PostgreSQL','Prisma','Redis','Docker'];
+const stackB = ['Tailwind','Zustand','TanStack Query','Socket.IO','BullMQ','JWT','TOTP 2FA','Sharp','ExcelJS','PHP','Symfony','WordPress','WooCommerce','MinIO','Nginx','Traefik','Vercel AI SDK','Linux'];
+const mk = w => `<div class="chip"><i></i>${w}</div>`;
+document.getElementById('track1').innerHTML = (stackA.map(mk).join('')).repeat(2);
+document.getElementById('track2').innerHTML = (stackB.map(mk).join('')).repeat(2);
+
+/* ===== thumbnail switch ===== */
+document.querySelectorAll('.proj').forEach(p=>{
+  const main = p.querySelector('[data-main]'); const thumbs=[...p.querySelectorAll('.thumbs img')];
+  thumbs.forEach(t=>t.addEventListener('click',()=>{ main.src=t.src; thumbs.forEach(x=>x.classList.remove('sel')); t.classList.add('sel'); }));
+});
+
+/* ===== 3D tilt ===== */
+const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!reduce && matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.tilt').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-4px)`;
+    });
+    card.addEventListener('pointerleave',()=>card.style.transform='');
+  });
+}
+
+/* ===== lightbox with per-project gallery ===== */
+const lb=document.getElementById('lightbox'), lbImg=lb.querySelector('img');
+let gallery=[], gi=0;
+function openLB(srcs,idx){ gallery=srcs; gi=idx; lbImg.src=gallery[gi]; lb.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+function nav2(d){ if(!gallery.length)return; gi=(gi+d+gallery.length)%gallery.length; lbImg.src=gallery[gi]; }
+document.querySelectorAll('[data-gallery]').forEach(block=>{
+  const srcs=[...block.querySelectorAll('.thumbs img')].map(i=>i.src);
+  const single=block.querySelector('.shot [data-main]'); if(single && !srcs.length) srcs.push(single.src);
+  block.querySelectorAll('img[data-main]').forEach(img=>img.addEventListener('click',()=>{
+    const cur=srcs.indexOf(img.src); openLB(srcs, cur<0?0:cur);
+  }));
+});
+lb.querySelector('.lb-close').onclick=closeLB;
+lb.querySelector('.lb-prev').onclick=()=>nav2(-1);
+lb.querySelector('.lb-next').onclick=()=>nav2(1);
+lb.addEventListener('click',e=>{ if(e.target===lb) closeLB(); });
+addEventListener('keydown',e=>{ if(!lb.classList.contains('open'))return; if(e.key==='Escape')closeLB(); if(e.key==='ArrowLeft')nav2(-1); if(e.key==='ArrowRight')nav2(1); });
+
+/* ===== hero particles ===== */
+(function(){
+  if(reduce) return;
+  const cv=document.getElementById('particles'), ctx=cv.getContext('2d'); let w,h,parts;
+  const DPR=Math.min(devicePixelRatio||1,2);
+  function size(){ w=cv.width=innerWidth*DPR; h=cv.height=cv.parentElement.offsetHeight*DPR; cv.style.width=innerWidth+'px'; cv.style.height=cv.parentElement.offsetHeight+'px';
+    const n=Math.min(70, Math.floor(innerWidth/22));
+    parts=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25*DPR,vy:(Math.random()-.5)*.25*DPR,r:(Math.random()*1.6+.6)*DPR}));
+  }
+  size(); addEventListener('resize',size);
+  function loop(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<parts.length;i++){ const p=parts[i]; p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1; if(p.y<0||p.y>h)p.vy*=-1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fillStyle='rgba(167,139,250,.55)'; ctx.fill();
+      for(let j=i+1;j<parts.length;j++){ const q=parts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.hypot(dx,dy);
+        if(d<120*DPR){ ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle='rgba(124,58,237,'+(.16*(1-d/(120*DPR)))+')'; ctx.lineWidth=DPR*.6; ctx.stroke(); } }
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+</body>
+</html>
