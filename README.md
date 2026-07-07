@@ -57,4 +57,4 @@ Sigue el prompt. `vercel --prod` para producción.
 
 ## Notas
 - Los proyectos internos (AppVisitas, Altius, SuperEdu) están marcados como *Red interna corporativa* — sin enlace público. Si tienes demo pública, cambia el `<a class="proj-link muted">` por un enlace real.
-- SuperEdu no tenía captura; usa un placeholder con gradiente + ícono. Sustitúyelo agregando `assets/img/superedu-1.png` y cambiando el bloque `.placeholder-shot` por un `<img data-main>`.
+- Las capturas de SuperEdu llevan blur en nombres de empleados y marca del cliente (datos personales / cliente anonimizado en el portafolio).
